@@ -1,0 +1,131 @@
+CREATE TABLE Marca (
+    MarcaId INT IDENTITY(1,1) PRIMARY KEY,
+    Nombre VARCHAR(100) NOT NULL UNIQUE);
+
+CREATE TABLE TipoVehiculo (
+    TipoVehiculoId INT IDENTITY(1,1) PRIMARY KEY,
+    Nombre VARCHAR(100) NOT NULL UNIQUE);
+
+CREATE TABLE Combustible (
+    CombustibleId INT IDENTITY(1,1) PRIMARY KEY,
+    Tipo VARCHAR(50) NOT NULL UNIQUE);
+
+  
+CREATE TABLE Vehiculo (
+    VehiculoId INT IDENTITY(1,1) PRIMARY KEY,
+    Codigo VARCHAR(50) NOT NULL UNIQUE,
+    MarcaId INT NOT NULL FOREIGN KEY REFERENCES Marca(MarcaId),
+    TipoVehiculoId INT NOT NULL FOREIGN KEY REFERENCES TipoVehiculo(TipoVehiculoId),
+    CombustibleId INT NOT NULL FOREIGN KEY REFERENCES Combustible(CombustibleId),
+    Modelo VARCHAR(100) NOT NULL,
+    AnioProduccion INT NOT NULL,
+    NumeroChasis VARCHAR(100) NOT NULL UNIQUE,
+    Cilindraje DECIMAL(6,2) NOT NULL,
+    PrecioCompra DECIMAL(12,2) NOT NULL,
+    PrecioVenta DECIMAL(12,2) NOT NULL,
+    Estado VARCHAR(20) NOT NULL DEFAULT 'Disponible',
+    FechaIngreso DATETIME NOT NULL DEFAULT GETDATE(),
+    Observaciones TEXT );
+
+CREATE TABLE VehiculoFoto (
+    FotoId INT IDENTITY(1,1) PRIMARY KEY,
+    VehiculoId INT NOT NULL FOREIGN KEY REFERENCES Vehiculo(VehiculoId),
+    Url VARCHAR(200) NOT NULL,
+    Orden INT NOT NULL );
+
+CREATE TABLE Cliente (
+    ClienteId INT IDENTITY(1,1) PRIMARY KEY,
+    Nombre VARCHAR(100) NOT NULL,
+    Apellido VARCHAR(100) NOT NULL,
+    Telefono VARCHAR(20),
+    Email VARCHAR(100),
+    Direccion VARCHAR(200) );
+
+CREATE TABLE Empleado (
+    EmpleadoId INT IDENTITY(1,1) PRIMARY KEY,
+    Nombre VARCHAR(100) NOT NULL,
+    Apellido VARCHAR(100) NOT NULL,
+    Cargo VARCHAR(50) NOT NULL );
+
+CREATE TABLE Venta (
+    VentaId INT IDENTITY(1,1) PRIMARY KEY,
+    VehiculoId INT NOT NULL FOREIGN KEY REFERENCES Vehiculo(VehiculoId),
+    ClienteId INT NOT NULL FOREIGN KEY REFERENCES Cliente(ClienteId),
+    EmpleadoId INT NOT NULL FOREIGN KEY REFERENCES Empleado(EmpleadoId),
+    FechaVenta DATETIME NOT NULL DEFAULT GETDATE(),
+    PrecioFinal DECIMAL(12,2) NOT NULL,
+    MetodoPago VARCHAR(50) NOT NULL,
+    DescuentoPorc DECIMAL(5,2) NOT NULL DEFAULT 0.00 );
+
+  
+INSERT INTO Marca (Nombre) VALUES
+('Toyota'),('Tesla'),('Honda'), ('Ford'),('Chevrolet'),('Abarth'),('Nissan'),('BMW'),('Porsche'), ('Mercedes'), ('Kia'), ('Hyundai'), ('Volkswagen'),('Alfa Romeo'),('Cupra');
+
+INSERT INTO TipoVehiculo (Nombre) VALUES
+('Sedan'), ('Hatchback'), ('Camioneta Pickup'),('Camioneta Cerrada'),('vehiculos Electricos'),('Deportivo'),('Minivan'),('Camioneta Extracabina'),('Crossover'),('Doble Cabina'),('Microbus'),('Camión hasta 5T');
+
+
+INSERT INTO Combustible (Tipo) VALUES
+('Gasolina'), ('Diesel'), ('Eléctrico'),('Etanol'),('GNC'),('GNL'),('Híbrido');
+
+SELECT * FROM Marca;
+SELECT * FROM TipoVehiculo;
+SELECT * FROM Combustible;
+
+INSERT INTO Vehiculo (Codigo, MarcaId, TipoVehiculoId, CombustibleId, Modelo, AnioProduccion, NumeroChasis, Cilindraje, PrecioCompra, PrecioVenta)
+VALUES
+('VH001', 1, 1, 1, 'Corolla', 2018, 'CHS001', 1800, 12000, 14500),
+('VH002', 2, 2, 1, 'Civic', 2020, 'CHS002', 2000, 15000, 17000),
+('VH003', 3, 3, 2, 'F-150', 2017, 'CHS003', 3500, 25000, 28000);
+
+SELECT COUNT(*) FROM Vehiculo;
+
+INSERT INTO VehiculoFoto (VehiculoId, Url, Orden)
+VALUES
+(1, 'foto1.jpg', 1),
+(1, 'foto2.jpg', 2),
+(2, 'foto1.jpg', 1);
+
+
+SELECT * FROM Cliente;
+SELECT * FROM Empleado;
+SELECT * FROM Venta;
+
+
+INSERT INTO Cliente (Nombre, Apellido, Telefono, Email, Direccion)
+VALUES
+('Daniel', 'Aleman', '555-1111', 'daniel@mail.com', 'Masaya'),
+('Maria', 'Perez', '555-2222', 'maria@mail.com', 'Managua'),
+('Gabriel','Rivas', '555-2234', 'gabo@mail.com', 'Managua'),
+('cristiana', 'Garcia', '555-2242', 'cris@mail.com', 'Granada'),
+('Nestor', 'Gutierrez', '555-22782', 'cris@mail.com', 'Masaya');
+
+
+INSERT INTO Empleado (Nombre, Apellido, Cargo)
+VALUES
+('Mauricio', 'Valle', 'Vendedor'),
+('Alejandro', 'Martinez', 'Asistente'),
+('Johansse', 'Roque', 'Coordinador de tienda'),
+('Jeymi', 'Artola', 'Administrador');
+
+
+INSERT INTO Venta (VehiculoId, ClienteId, EmpleadoId, PrecioFinal, MetodoPago, DescuentoPorc)
+VALUES
+(1, 1, 1, 14500, 'Efectivo', 0),
+(2, 2, 2, 16150, 'Tarjeta', 5); -- 5% descuento
+
+
+SELECT * FROM Vehiculo WHERE Estado='Disponible';
+SELECT * FROM Vehiculo WHERE Codigo='VH001';
+
+SELECT TOP 1 * FROM Vehiculo WHERE Estado='Disponible' ORDER BY AnioProduccion ASC;
+
+SELECT TOP 1 * FROM Vehiculo WHERE Estado='Disponible' ORDER BY Cilindraje DESC;
+
+SELECT * FROM Marca;
+SELECT * FROM TipoVehiculo;
+SELECT * FROM Combustible;
+SELECT TOP 10 * FROM Vehiculo;
+SELECT * FROM Cliente;
+SELECT * FROM Empleado;
+SELECT * FROM Venta;
