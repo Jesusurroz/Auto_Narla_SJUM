@@ -14,6 +14,7 @@ Contenido del repositorio
 - docs/diagrama_Autos_NARLA_SJUM.png → Diagrama ER del modelo de base de datos (exportado desde dbdiagram.io).  
 - docs/diccionario_Autos_NARLA_SJUM → Diccionario de datos y descripciones de tablas y campos.  
   
+<img width="1263" height="938" alt="Untitled" src="https://github.com/user-attachments/assets/3628f483-78e0-4e46-98b2-718e6b0c94c5" />
 
  Entidades principales
 
@@ -32,3 +33,4 @@ Contenido del repositorio
 - SQL Server Management Studio (SSMS)  
 - Herramienta de modelado: [dbdiagram.io](https://dbdiagram.io) (Fue una 2da pocion ya que no tenia ER/STUDIO)
 
+<img width="1263" height="938" alt="Untitled" src="https://github.com/user-attachments/assets/186bd794-3523-440f-9ad5-fd76fd65c4c7" />
