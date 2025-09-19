@@ -32,4 +32,3 @@ Contenido del repositorio
 - SQL Server Management Studio (SSMS)  
 - Herramienta de modelado: [dbdiagram.io](https://dbdiagram.io) (Fue una 2da pocion ya que no tenia ER/STUDIO)
 
-<img width="1263" height="938" alt="Untitled" src="https://github.com/user-attachments/assets/15538158-f244-4a3e-b765-0db7cec37be1" />
