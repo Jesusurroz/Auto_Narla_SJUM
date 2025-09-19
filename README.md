@@ -13,7 +13,7 @@ Contenido del repositorio
 - **`sql/consultas_Autos_NARLA_SJUM.sql** → Consultas requeridas por la gerencia (filtros 1–11).  
 - **`docs/diagrama_Autos_NARLA_SJUM.png** → Diagrama ER del modelo de base de datos (exportado desde dbdiagram.io).  
 - **`docs/diccionario_Autos_NARLA_SJUM.* → Diccionario de datos y descripciones de tablas y campos.  
-- **`fotos/`** → Carpeta con imágenes de ejemplo de vehículos.
+  
 
  Entidades principales
 
@@ -32,6 +32,4 @@ Contenido del repositorio
 - SQL Server Management Studio (SSMS)  
 - Herramienta de modelado: [dbdiagram.io](https://dbdiagram.io) (Fue una 2da pocion ya que no tenia ER/STUDIO)
 
-
-https://github.com/usuario/Autos_NARLA_SJUM.git
 <img width="1263" height="938" alt="Untitled" src="https://github.com/user-attachments/assets/15538158-f244-4a3e-b765-0db7cec37be1" />
