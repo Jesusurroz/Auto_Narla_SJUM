@@ -1,3 +1,7 @@
+link de drive de google video explicativo del login de SQL SERVER https://drive.google.com/file/d/1KdZKrB5Sr1KHNLQfQ_Q0Aw-F4KYDOEcZ/view?usp=drive_link
+ 
+ 
+ 
  Auto_Narla_SJUM
 Autos NARLA – Base de Datos
 
